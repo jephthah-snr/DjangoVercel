@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-32-w9phd*pzbgvvem943767ax3rh&odlq+q$69$qbb8p3=3m96
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['https://aubcotonou.org', 'localhost:8000','.vercel.app', '.now.sh', 'localhost:8000', '*']
+CSRF_TRUSTED_ORIGINS = ['https://aubcotonou.org','http://127.0.0.1','.vercel.app', '.now.sh', ]
 
 # ['.vercel.app', '.now.sh', 'localhost:8000']
 
@@ -117,13 +119,33 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT =   os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
+#For Custom USER
+AUTH_USER_MODEL = "student_management_app.CustomUser"
+
+# Registering Custom Backend "EmailBackEnd"
+AUTHENTICATION_BACKENDS = ['student_management_app.EmailBackEnd.EmailBackEnd']
+
+ABSOLUTE_URL_OVERRIDES = {'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username]) }
+
+
+#Password Reset
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'africanuniversityofbenin2016@gmail.com'
+EMAIL_HOST_PASSWORD = 'sgrcimfrkmfrzdca'
+EMAIL_HOST_PORT = '465'   #sendgrid ports [25, 587	(for unencrypted/TLS connections)] [465 (for SSL connections)]
+EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
