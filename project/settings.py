@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ['https://aubcotonou.org', 'localhost:8000','.vercel.app', '.now.sh', 'localhost:8000', '*']
-CSRF_TRUSTED_ORIGINS = ['https://aubcotonou.org','http://127.0.0.1','.vercel.app', '.now.sh', ]
+CSRF_TRUSTED_ORIGINS = ['https://aubcotonou.org','http://127.0.0.1','https://django-vercel-jephthah-snr.vercel.app/' ]
 
 # ['.vercel.app', '.now.sh', 'localhost:8000']
 
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -132,12 +132,12 @@ STATICFILES_DIRS = [
 
 
 #For Custom USER
-AUTH_USER_MODEL = "student_management_app.CustomUser"
+#AUTH_USER_MODEL = "student_management_app.CustomUser"
 
 # Registering Custom Backend "EmailBackEnd"
-AUTHENTICATION_BACKENDS = ['student_management_app.EmailBackEnd.EmailBackEnd']
+#AUTHENTICATION_BACKENDS = ['student_management_app.EmailBackEnd.EmailBackEnd']
 
-ABSOLUTE_URL_OVERRIDES = {'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username]) }
+#ABSOLUTE_URL_OVERRIDES = {'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username]) }
 
 
 #Password Reset
