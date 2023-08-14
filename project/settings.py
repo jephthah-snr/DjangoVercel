@@ -128,10 +128,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT =   os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT =   os.path.join(BASE_DIR, 'staticfiles_build')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    '/vercel/path0/static'
+    '/vercel/path0/staticfiles_build'
 ]
 
 
