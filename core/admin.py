@@ -5,3 +5,6 @@
 # admin.site.register(timetable)
 # admin.site.register(blog)
 # admin.site.register(event)
+
+
+# no_use_django
